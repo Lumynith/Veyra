@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/logo-dark.png">
@@ -171,3 +172,6 @@ examples/       example macros and custom blocks
 resources/      icons and theme
 tests/          pytest suite
 ```
+=======
+# Veyra
+>>>>>>> 032c7dc4181df045980a19d0cc0ee0af40b131a2
