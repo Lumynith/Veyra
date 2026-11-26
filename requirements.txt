@@ -1,0 +1,21 @@
+# Core (required)
+PySide6>=6.6
+pywin32>=306
+opencv-python>=4.8
+numpy>=1.26
+mss>=9.0
+
+# Windows OCR backend (default text recognition; uses the OCR built into Windows 10/11)
+winrt-runtime>=2.0
+winrt-Windows.Foundation>=2.0
+winrt-Windows.Foundation.Collections>=2.0
+winrt-Windows.Globalization>=2.0
+winrt-Windows.Graphics.Imaging>=2.0
+winrt-Windows.Media.Ocr>=2.0
+winrt-Windows.Storage.Streams>=2.0
+
+# Optional: Tesseract OCR backend (also needs the Tesseract program installed separately)
+pytesseract>=0.3.10
+
+# Tests
+pytest>=8

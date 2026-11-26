@@ -1,0 +1,138 @@
+{
+  "format": "lumencrest.block",
+  "version": 1,
+  "id": "custom.click_text_if_visible",
+  "title": "Click Text If Visible",
+  "description": "Clicks the text when it appears within the timeout, then waits. Never fails: 'clicked' tells you whether it was there.",
+  "category": "Custom",
+  "icon": "text",
+  "inputs": [
+    {
+      "name": "label",
+      "label": "Text",
+      "type": "text",
+      "default": "Play"
+    },
+    {
+      "name": "after",
+      "label": "Wait after (s)",
+      "type": "number",
+      "default": 1
+    }
+  ],
+  "outputs": [
+    {
+      "name": "clicked"
+    }
+  ],
+  "body": "steps",
+  "workflow": {
+    "format": "lumencrest.workflow",
+    "version": 1,
+    "scripts": [
+      {
+        "id": "83518c2e3f",
+        "pos": [
+          0.0,
+          0.0
+        ],
+        "blocks": [
+          {
+            "id": "02e1fa40b9",
+            "type": "flow.start",
+            "params": {},
+            "collapsed": false,
+            "on_error": "stop"
+          },
+          {
+            "id": "52d5dc0971",
+            "type": "var.set",
+            "params": {
+              "name": "clicked",
+              "value": "false"
+            },
+            "collapsed": false,
+            "on_error": "stop"
+          },
+          {
+            "id": "652503a7e1",
+            "type": "txt.find",
+            "params": {
+              "target": "",
+              "text": "{label}",
+              "match": "exact",
+              "case_sensitive": false,
+              "confidence": 0.0,
+              "language": "",
+              "region": "",
+              "space": "viewport",
+              "output": "seen",
+              "timeout": 3
+            },
+            "collapsed": false,
+            "on_error": "stop"
+          },
+          {
+            "id": "e2f61272a6",
+            "type": "flow.if",
+            "params": {
+              "left": "{seen}",
+              "op": "is true",
+              "right": "",
+              "case_sensitive": false
+            },
+            "collapsed": false,
+            "on_error": "stop",
+            "body": [
+              {
+                "id": "ffaa0074c0",
+                "type": "txt.click",
+                "params": {
+                  "target": "",
+                  "text": "{label}",
+                  "match": "exact",
+                  "case_sensitive": false,
+                  "confidence": 0.0,
+                  "language": "",
+                  "region": "",
+                  "space": "viewport",
+                  "timeout": 1,
+                  "interval": 0.5,
+                  "action": "left",
+                  "occurrence": 1,
+                  "output": "hit"
+                },
+                "collapsed": false,
+                "on_error": "stop"
+              },
+              {
+                "id": "41ec514323",
+                "type": "var.set",
+                "params": {
+                  "name": "clicked",
+                  "value": "true"
+                },
+                "collapsed": false,
+                "on_error": "stop"
+              },
+              {
+                "id": "f9cd7dc0ca",
+                "type": "flow.wait",
+                "params": {
+                  "seconds": "{after}"
+                },
+                "collapsed": false,
+                "on_error": "stop"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "groups": [],
+    "variables": {}
+  },
+  "script": "# inputs['name'] holds each input; output('name', value) returns a value.\nlog('Hello from', inputs)\n",
+  "permissions": {},
+  "timeout": 30.0
+}

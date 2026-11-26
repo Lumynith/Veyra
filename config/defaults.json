@@ -1,0 +1,64 @@
+{
+  "app": {
+    "window_width": 1436,
+    "window_height": 878
+  },
+  "viewport": {
+    "width": 841,
+    "height": 661,
+    "size_mode": "outer",
+    "dock_mode": "anchor",
+    "auto_fallback": true,
+    "poll_interval_ms": 500
+  },
+  "roblox": {
+    "process_names": [
+      "RobloxPlayerBeta.exe"
+    ]
+  },
+  "logging": {
+    "level": "INFO"
+  },
+  "ocr": {
+    "backend": "windows",
+    "tesseract_cmd": "C:/Program Files/Tesseract-OCR/tesseract.exe",
+    "scale": 2.0,
+    "language": "",
+    "cache": true
+  },
+  "vision": {
+    "frame_reuse_ms": 40,
+    "min_interval": 0.05,
+    "cache": true
+  },
+  "projects": {
+    "autosave_s": 60,
+    "recent": []
+  },
+  "recorder": {
+    "space": "viewport",
+    "preset": "medium",
+    "options": {}
+  },
+  "hotkeys": {
+    "start": "Ctrl+Alt+F5",
+    "pause": "Ctrl+Alt+F6",
+    "resume": "Ctrl+Alt+F7",
+    "stop": "Ctrl+Alt+F8",
+    "record": "Ctrl+Alt+F9",
+    "record_stop": "Ctrl+Alt+F10",
+    "toggle_window": "Ctrl+Alt+H"
+  },
+  "startup": {
+    "open": "last",
+    "page": "last"
+  },
+  "ui": {
+    "theme": "dark",
+    "accent": "default",
+    "animations": true
+  },
+  "editor": {
+    "favorites": []
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "format": "lumencrest.block",
+  "version": 1,
+  "id": "custom.format_duration",
+  "title": "Format Duration",
+  "description": "Turns a number of seconds into text like 1h 02m 03s.",
+  "category": "Custom",
+  "icon": "script",
+  "inputs": [
+    {
+      "name": "seconds",
+      "label": "Seconds",
+      "type": "number",
+      "default": 0
+    }
+  ],
+  "outputs": [
+    {
+      "name": "text"
+    }
+  ],
+  "body": "script",
+  "workflow": {
+    "format": "lumencrest.workflow",
+    "version": 1,
+    "scripts": [
+      {
+        "id": "052a19c78c",
+        "pos": [
+          0.0,
+          0.0
+        ],
+        "blocks": [
+          {
+            "id": "d347c6e7a6",
+            "type": "flow.start",
+            "params": {},
+            "collapsed": false,
+            "on_error": "stop"
+          },
+          {
+            "id": "fab095f1c3",
+            "type": "flow.comment",
+            "params": {
+              "text": "Inputs are {variables} here. Set variables named like your outputs to return them."
+            },
+            "collapsed": false,
+            "on_error": "stop"
+          }
+        ]
+      }
+    ],
+    "groups": [],
+    "variables": {}
+  },
+  "script": "total = int(inputs['seconds'])\nh, rest = divmod(total, 3600)\nm, s = divmod(rest, 60)\noutput('text', f'{h}h {m:02d}m {s:02d}s' if h else f'{m}m {s:02d}s')\n",
+  "permissions": {},
+  "timeout": 30.0
+}

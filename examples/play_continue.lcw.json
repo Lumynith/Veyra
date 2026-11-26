@@ -1,0 +1,294 @@
+{
+  "format": "lumencrest.workflow",
+  "version": 1,
+  "scripts": [
+    {
+      "id": "6de6738b80",
+      "pos": [
+        0.0,
+        0.0
+      ],
+      "blocks": [
+        {
+          "id": "b518f42496",
+          "type": "flow.start",
+          "params": {},
+          "collapsed": false,
+          "on_error": "stop"
+        },
+        {
+          "id": "8e3eac7dc8",
+          "type": "flow.comment",
+          "params": {
+            "text": "Text demo: Play \u2192 Continue, retrying until it works"
+          },
+          "collapsed": false,
+          "on_error": "stop"
+        },
+        {
+          "id": "99e5678551",
+          "type": "var.set",
+          "params": {
+            "name": "done",
+            "value": "false"
+          },
+          "collapsed": false,
+          "on_error": "stop"
+        },
+        {
+          "id": "8ec7bd76ba",
+          "type": "var.set",
+          "params": {
+            "name": "tries",
+            "value": "0"
+          },
+          "collapsed": false,
+          "on_error": "stop"
+        },
+        {
+          "id": "eef5cd1c77",
+          "type": "flow.repeat_until",
+          "params": {
+            "left": "{done}",
+            "op": "is true",
+            "right": "",
+            "case_sensitive": false
+          },
+          "collapsed": false,
+          "on_error": "stop",
+          "body": [
+            {
+              "id": "8765266a47",
+              "type": "var.set",
+              "params": {
+                "name": "tries",
+                "value": "={tries} + 1"
+              },
+              "collapsed": false,
+              "on_error": "stop"
+            },
+            {
+              "id": "34d969598c",
+              "type": "txt.find",
+              "params": {
+                "target": "",
+                "text": "Play",
+                "match": "exact",
+                "case_sensitive": false,
+                "confidence": 0.0,
+                "language": "",
+                "region": "",
+                "space": "viewport",
+                "output": "play"
+              },
+              "collapsed": false,
+              "on_error": "stop"
+            },
+            {
+              "id": "97466001c5",
+              "type": "flow.if",
+              "params": {
+                "left": "{play}",
+                "op": "is true",
+                "right": "",
+                "case_sensitive": false
+              },
+              "collapsed": false,
+              "on_error": "stop",
+              "body": [
+                {
+                  "id": "b83488a50d",
+                  "type": "txt.click",
+                  "params": {
+                    "target": "",
+                    "text": "Play",
+                    "match": "exact",
+                    "case_sensitive": false,
+                    "confidence": 0.0,
+                    "language": "",
+                    "region": "",
+                    "space": "viewport",
+                    "timeout": 2,
+                    "interval": 0.5,
+                    "action": "left",
+                    "occurrence": 1,
+                    "output": "play"
+                  },
+                  "collapsed": false,
+                  "on_error": "stop"
+                },
+                {
+                  "id": "ef48e35c0e",
+                  "type": "flow.wait",
+                  "params": {
+                    "seconds": 2
+                  },
+                  "collapsed": false,
+                  "on_error": "stop"
+                },
+                {
+                  "id": "a4cb2642ea",
+                  "type": "txt.find",
+                  "params": {
+                    "target": "",
+                    "text": "Continue",
+                    "match": "exact",
+                    "case_sensitive": false,
+                    "confidence": 0.0,
+                    "language": "",
+                    "region": "",
+                    "space": "viewport",
+                    "output": "cont"
+                  },
+                  "collapsed": false,
+                  "on_error": "stop"
+                },
+                {
+                  "id": "21279d0a12",
+                  "type": "flow.if",
+                  "params": {
+                    "left": "{cont}",
+                    "op": "is true",
+                    "right": "",
+                    "case_sensitive": false
+                  },
+                  "collapsed": false,
+                  "on_error": "stop",
+                  "body": [
+                    {
+                      "id": "ca0cd8521c",
+                      "type": "txt.click",
+                      "params": {
+                        "target": "",
+                        "text": "Continue",
+                        "match": "exact",
+                        "case_sensitive": false,
+                        "confidence": 0.0,
+                        "language": "",
+                        "region": "",
+                        "space": "viewport",
+                        "timeout": 2,
+                        "interval": 0.5,
+                        "action": "left",
+                        "occurrence": 1,
+                        "output": "cont"
+                      },
+                      "collapsed": false,
+                      "on_error": "stop"
+                    },
+                    {
+                      "id": "d74f857bbb",
+                      "type": "var.set",
+                      "params": {
+                        "name": "done",
+                        "value": "true"
+                      },
+                      "collapsed": false,
+                      "on_error": "stop"
+                    }
+                  ]
+                },
+                {
+                  "id": "f1ca2ce875",
+                  "type": "flow.else",
+                  "params": {},
+                  "collapsed": false,
+                  "on_error": "stop",
+                  "body": [
+                    {
+                      "id": "496b3493de",
+                      "type": "util.log",
+                      "params": {
+                        "message": "Continue not visible yet (try {tries})",
+                        "level": "info"
+                      },
+                      "collapsed": false,
+                      "on_error": "stop"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "9632de91bc",
+              "type": "flow.else",
+              "params": {},
+              "collapsed": false,
+              "on_error": "stop",
+              "body": [
+                {
+                  "id": "4508cb30d4",
+                  "type": "util.log",
+                  "params": {
+                    "message": "Play not visible, retrying (try {tries})",
+                    "level": "info"
+                  },
+                  "collapsed": false,
+                  "on_error": "stop"
+                },
+                {
+                  "id": "9beace0b0f",
+                  "type": "flow.wait",
+                  "params": {
+                    "seconds": 1
+                  },
+                  "collapsed": false,
+                  "on_error": "stop"
+                }
+              ]
+            },
+            {
+              "id": "fdddc6a595",
+              "type": "flow.if",
+              "params": {
+                "left": "{tries}",
+                "op": ">=",
+                "right": "20",
+                "case_sensitive": false
+              },
+              "collapsed": false,
+              "on_error": "stop",
+              "body": [
+                {
+                  "id": "46270d3653",
+                  "type": "util.log",
+                  "params": {
+                    "message": "Giving up after {tries} tries",
+                    "level": "warning"
+                  },
+                  "collapsed": false,
+                  "on_error": "stop"
+                },
+                {
+                  "id": "fb3bbeacba",
+                  "type": "flow.break",
+                  "params": {},
+                  "collapsed": false,
+                  "on_error": "stop"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "344ef785d2",
+          "type": "util.log",
+          "params": {
+            "message": "Text demo finished: done={done} after {tries} tries",
+            "level": "info"
+          },
+          "collapsed": false,
+          "on_error": "stop"
+        },
+        {
+          "id": "0a1a21bcb6",
+          "type": "flow.end",
+          "params": {},
+          "collapsed": false,
+          "on_error": "stop"
+        }
+      ]
+    }
+  ],
+  "groups": []
+}

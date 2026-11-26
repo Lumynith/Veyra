@@ -1,0 +1,27 @@
+# Python caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Build output (the release zip goes on the GitHub Releases page, not in the repo)
+build/
+dist/
+*.spec
+
+# Your own data: settings, saved macros, captured images, logs
+config/settings.json
+data/
+logs/
+*.lcp.json
+!examples/**/*.lcp.json
+*.tmp
+
+# Editor / OS clutter
+.vscode/
+.idea/
+.claude/
+Thumbs.db
+desktop.ini

@@ -1,0 +1,255 @@
+{
+  "format": "lumencrest.workflow",
+  "version": 1,
+  "scripts": [
+    {
+      "id": "56b5d833ce",
+      "pos": [
+        0.0,
+        0.0
+      ],
+      "blocks": [
+        {
+          "id": "8fc9ba6d51",
+          "type": "flow.start",
+          "params": {},
+          "collapsed": false,
+          "on_error": "stop"
+        },
+        {
+          "id": "4b6c7d8e22",
+          "type": "flow.comment",
+          "params": {
+            "text": "Demo: nested loops, branches and variables"
+          },
+          "collapsed": false,
+          "on_error": "stop"
+        },
+        {
+          "id": "706abf449f",
+          "type": "var.set",
+          "params": {
+            "name": "total",
+            "value": "0"
+          },
+          "collapsed": false,
+          "on_error": "stop"
+        },
+        {
+          "id": "65900c7160",
+          "type": "flow.repeat",
+          "params": {
+            "times": 3,
+            "counter": "outer"
+          },
+          "collapsed": false,
+          "on_error": "stop",
+          "body": [
+            {
+              "id": "1848ba5690",
+              "type": "flow.repeat",
+              "params": {
+                "times": 2,
+                "counter": "inner"
+              },
+              "collapsed": false,
+              "on_error": "stop",
+              "body": [
+                {
+                  "id": "1a84c88117",
+                  "type": "var.set",
+                  "params": {
+                    "name": "total",
+                    "value": "={total} + 1"
+                  },
+                  "collapsed": false,
+                  "on_error": "stop"
+                }
+              ]
+            },
+            {
+              "id": "97dc4986ee",
+              "type": "flow.if",
+              "params": {
+                "left": "{outer}",
+                "op": "==",
+                "right": "2",
+                "case_sensitive": false
+              },
+              "collapsed": false,
+              "on_error": "stop",
+              "body": [
+                {
+                  "id": "49e2941dbf",
+                  "type": "util.log",
+                  "params": {
+                    "message": "Outer pass {outer}: this is the middle pass",
+                    "level": "info"
+                  },
+                  "collapsed": false,
+                  "on_error": "stop"
+                }
+              ]
+            },
+            {
+              "id": "4760f2e837",
+              "type": "flow.else",
+              "params": {},
+              "collapsed": false,
+              "on_error": "stop",
+              "body": [
+                {
+                  "id": "90f3c47bab",
+                  "type": "util.log",
+                  "params": {
+                    "message": "Outer pass {outer}: total so far {total}",
+                    "level": "info"
+                  },
+                  "collapsed": false,
+                  "on_error": "stop"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "f24f609a0c",
+          "type": "var.set",
+          "params": {
+            "name": "n",
+            "value": "0"
+          },
+          "collapsed": false,
+          "on_error": "stop"
+        },
+        {
+          "id": "4e51dc4c33",
+          "type": "flow.repeat_until",
+          "params": {
+            "left": "{n}",
+            "op": ">=",
+            "right": "5",
+            "case_sensitive": false
+          },
+          "collapsed": false,
+          "on_error": "stop",
+          "body": [
+            {
+              "id": "0148fad9e2",
+              "type": "var.set",
+              "params": {
+                "name": "n",
+                "value": "={n} + 1"
+              },
+              "collapsed": false,
+              "on_error": "stop"
+            },
+            {
+              "id": "13df272f62",
+              "type": "flow.if",
+              "params": {
+                "left": "{n}",
+                "op": "==",
+                "right": "4",
+                "case_sensitive": false
+              },
+              "collapsed": false,
+              "on_error": "stop",
+              "body": [
+                {
+                  "id": "75e1bef94c",
+                  "type": "flow.break",
+                  "params": {},
+                  "collapsed": false,
+                  "on_error": "stop"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "1365407e74",
+          "type": "util.random",
+          "params": {
+            "minimum": 1,
+            "maximum": 6,
+            "integer": true,
+            "output": "dice"
+          },
+          "collapsed": false,
+          "on_error": "stop"
+        },
+        {
+          "id": "3fc70d681f",
+          "type": "util.log",
+          "params": {
+            "message": "Finished: total={total}, n={n}, dice={dice}",
+            "level": "info"
+          },
+          "collapsed": false,
+          "on_error": "stop"
+        },
+        {
+          "id": "1f2fa10494",
+          "type": "rbx.check",
+          "params": {
+            "output": "connected"
+          },
+          "collapsed": false,
+          "on_error": "stop"
+        },
+        {
+          "id": "8d6fd6a991",
+          "type": "flow.if",
+          "params": {
+            "left": "{connected}",
+            "op": "is true",
+            "right": "0",
+            "case_sensitive": false
+          },
+          "collapsed": false,
+          "on_error": "stop",
+          "body": [
+            {
+              "id": "16e4547bdf",
+              "type": "rbx.capture",
+              "params": {
+                "file": "captures/roblox_{timestamp}.png",
+                "output": "capture_path"
+              },
+              "collapsed": false,
+              "on_error": "stop"
+            }
+          ]
+        },
+        {
+          "id": "a592204873",
+          "type": "flow.else",
+          "params": {},
+          "collapsed": false,
+          "on_error": "stop",
+          "body": [
+            {
+              "id": "217c0fd68d",
+              "type": "util.log",
+              "params": {
+                "message": "Roblox not attached, skipping capture",
+                "level": "warning"
+              },
+              "collapsed": false,
+              "on_error": "stop"
+            }
+          ]
+        },
+        {
+          "id": "3b80f141c4",
+          "type": "flow.end",
+          "params": {},
+          "collapsed": false,
+          "on_error": "stop"
+        }
+      ]
+    }
+  ],
+  "groups": []
+}
