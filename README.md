@@ -24,7 +24,7 @@
 ## Warning
 Please note this is a project that was made for fun. This project with rarely get updates.
 
-Also Remeber using any macro on roblox has the risk of the user getting banned.
+Also Remember using any macro on roblox has the risk of the user getting banned.
 WE ARE NOT RESPONSIBLE FOR YOUR BANS IF IT HAPPENS
 
 ## What is Veyra?
