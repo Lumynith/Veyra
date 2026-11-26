@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/logo-dark.png">
@@ -14,13 +14,18 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/Lumynith/Veyra/releases/latest"><b>⬇ Download for Windows</b></a>
   &nbsp;·&nbsp; <a href="#getting-started">Getting started</a>
   &nbsp;·&nbsp; <a href="#features">Features</a>
   &nbsp;·&nbsp; <a href="#troubleshooting">Troubleshooting</a>
 </p>
 
 ---
+
+## Warning
+Please note this is a project that was made for fun. This project with rarely get updates.
+
+Also Remeber using any macro on roblox has the risk of the user getting banned.
+WE ARE NOT RESPONSIBLE FOR YOUR BANS IF IT HAPPENS
 
 ## What is Veyra?
 
@@ -172,6 +177,7 @@ examples/       example macros and custom blocks
 resources/      icons and theme
 tests/          pytest suite
 ```
-=======
-# Veyra
->>>>>>> 032c7dc4181df045980a19d0cc0ee0af40b131a2
+
+## Support<3
+
+[![Support on Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-Support%20Development-FFDD00?style=for-the-badge&logo=buymeacoffee&logoColor=000000)](https://buymeacoffee.com/lumynith)
